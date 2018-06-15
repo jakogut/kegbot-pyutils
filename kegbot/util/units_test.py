@@ -3,7 +3,7 @@
 """Unittest for units module"""
 
 import unittest
-import units
+from . import units
 
 UNITS = units.UNITS
 
@@ -12,10 +12,10 @@ class UnitsTestCase(unittest.TestCase):
     converter = units.UnitConverter
 
     # ensure reverse mappings are in place
-    for k, orig_val in converter._table.iteritems():
+    for k, orig_val in converter._table.items():
       from_unit, to_unit = k
       reverse_key = (to_unit, from_unit)
-      self.assert_(converter.CanConvert(*reverse_key),
+      self.assertTrue(converter.CanConvert(*reverse_key),
                    "reverse for %s not found" % str(k))
 
       reverse_val = converter._table[reverse_key]
@@ -23,7 +23,7 @@ class UnitsTestCase(unittest.TestCase):
       delta = abs(reverse_val - computed_reverse_val)
       # Not using assertAlmostEqual: can we reliably predict the right value of
       # "places"?
-      self.assert_(delta < .000001)
+      self.assertTrue(delta < .000001)
 
   def testSameUnits(self):
     converter = units.UnitConverter

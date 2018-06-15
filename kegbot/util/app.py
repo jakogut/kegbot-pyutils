@@ -83,8 +83,8 @@ class App(object):
 
     try:
       self._extra_argv = FLAGS(sys.argv)  # parse flags
-    except gflags.FlagsError, e:
-      print 'Usage: %s ARGS\n%s\n\nError: %s' % (sys.argv[0], FLAGS, e)
+    except gflags.FlagsError as e:
+      print('Usage: %s ARGS\n%s\n\nError: %s' % (sys.argv[0], FLAGS, e))
       sys.exit(1)
 
     if daemon is None:
@@ -103,7 +103,7 @@ class App(object):
   def BuildAndRun(cls, name='main'):
     """Convenience class method to create and Start the app."""
     if sys.version_info < (2,4):
-      print>>sys.stderr, 'kegbot requires Python 2.4 or later; aborting'
+      print('kegbot requires Python 2.4 or later; aborting', file=sys.stderr)
       sys.exit(1)
 
     try:

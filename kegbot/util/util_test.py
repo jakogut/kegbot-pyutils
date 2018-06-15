@@ -16,7 +16,7 @@ class EnumTestCase(unittest.TestCase):
 
   def testBasicUse(self):
     self.assertNotEqual(self.enum.Foo, self.enum.Bar)
-    print str(self.enum)
+    print(str(self.enum))
     self.assertEqual(self.enum.Foo.Value, 0)
     self.assertEqual(self.enum.Bar.Value, 3)
     self.assertEqual(self.enum.Dip.Value, 4)
@@ -36,13 +36,13 @@ class SimpleGraphTestCase(unittest.TestCase):
     ))
 
   def testReverseMappings(self):
-    self.assertEquals(['a', 'c'], self.graph.ShortestPath('a', 'c'))
-    self.assertEquals(['a', 'c', 'e', 'f'], self.graph.ShortestPath('a', 'f'))
+    self.assertEqual(['a', 'c'], self.graph.ShortestPath('a', 'c'))
+    self.assertEqual(['a', 'c', 'e', 'f'], self.graph.ShortestPath('a', 'f'))
 
 class MiscTestCase(unittest.TestCase):
   def testGetVersion(self):
     version = util.get_version('bogus', 'foo')
-    self.assertEquals('foo', version)
+    self.assertEqual('foo', version)
 
 if __name__ == '__main__':
   unittest.main()
